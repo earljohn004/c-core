@@ -44,3 +44,8 @@ cgreen-src/
 cgreen/
 cucumber-cpp/
 cucumber-cpp-src/
+
+# Custom script
+openssl-build/
+*.tar.gz
+*.tar.gz.*
