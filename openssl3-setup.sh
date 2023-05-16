@@ -11,4 +11,4 @@ mkdir ./build/ && \
 ./config --prefix=$ENV/openssl-build/build/ --openssldir=$ENV/openssl-build/build/ -Wl,-rpath,$ENV/openssl-build/build/ &&\
 make && make install && \
 cd .. && \
-make -C cpp -f posix_openssl.mk
+USE_OPENSSL=1 USE_GRANT_TOKEN=1 USE_SUBSCRIBE_V2=1 USE_ADVANCED_HISTORY=1 PUBNUB_CRYPTO_API=1 make -C cpp -f posix_openssl.mk
