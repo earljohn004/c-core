@@ -108,11 +108,12 @@ CFLAGS =-g -I .. -I . -I ../openssl -Wall -D PUBNUB_THREADSAFE -D PUBNUB_LOG_LEV
 # -g enables debugging, remove to get a smaller executable
 
 OS := $(shell uname)
+ENV := $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
 ifeq ($(OS),Darwin)
 SOURCEFILES += ../posix/monotonic_clock_get_time_darwin.c
 OBJFILES += monotonic_clock_get_time_darwin.o
-LDLIBS=-lpthread -lssl -lcrypto -L/Volumes/MockAdsk/external-c-core/openssl-1.1.1t/build/lib
-CFLAGS += -I/Volumes/MockAdsk/external-c-core/openssl-1.1.1t/build/include/
+LDLIBS=-lpthread -lssl -lcrypto -L$(ENV)../openssl-build/build/lib
+CFLAGS += -I$(ENV)../openssl-build/build/include/
 else
 SOURCEFILES += ../posix/monotonic_clock_get_time_posix.c
 OBJFILES += monotonic_clock_get_time_posix.o
